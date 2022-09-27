@@ -25,6 +25,7 @@ app.use(express.urlencoded({ extended: false }));
 app.get("/", (req, res) => {
   logger(req, res, function (err) {
     if (err) return done(err);
+    res.render('index', { title: 'Express' });
     res.setHeader("content-type", "text/plain");
     res.end("You need to specify a route");
   });

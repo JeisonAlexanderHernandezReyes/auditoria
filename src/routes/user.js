@@ -8,6 +8,7 @@ const morgan = require("morgan");
  */
 const logger = morgan("combined");
 
+
 /**
  *  Get user by id from database and return it as JSON
  */
@@ -27,7 +28,7 @@ router.get("/:id", async function (req, res) {
  */
 router.get("/", async function (req, res) {
   try {
-    const sqlQuery = `SELECT * FROM usuarios WHERE idEstadoUsuario = 1`;
+    const sqlQuery = `SELECT nombres,apellidos,tipoDocumento,numeroDocumento FROM usuarios WHERE idEstadoUsuario = 1`;
     const rows = await pool.query(sqlQuery, req.params.id);
     res.status(200).json(rows);
   } catch (error) {
